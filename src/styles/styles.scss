@@ -9,4 +9,21 @@
      display: flex;
      align-self: center;
    }
+
+  button:focus   {
+     outline: none;
+   }
+
+ .inputButton {
+    color: white;
+    background-color: green;
+    border: none;
+    font-family: Tahoma;
+    border: none;
+  }
+
+  .messages {
+
+  }
+
 }

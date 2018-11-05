@@ -21,7 +21,7 @@ class App extends Component {
           >
             Learn React
           </a>
-          <InputComponent defaultText= "sth new"/>
+          <InputComponent defaultText= "sth new" defaultLabel="send"/>
         </header>
       </div>
     );
