@@ -1,0 +1,13 @@
+.App {
+
+
+}
+.inputTxt {
+   color: white;
+   background-color: black;
+   border: none;
+   font-family: Tahoma;
+   justify-content: center;
+   display: flex;
+   align-self: center;
+ }
