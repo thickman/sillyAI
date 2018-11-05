@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.scss';
-import './styles/styles.scss'
+import './styles/styles.scss';
+import InputComponent from './components/InputComponent';
 
 class App extends Component {
   render() {
@@ -20,7 +21,7 @@ class App extends Component {
           >
             Learn React
           </a>
-          <input className="inputTxt" type="text" defaultValue="dupa"/>
+          <InputComponent defaultText= "sth new"/>
         </header>
       </div>
     );
