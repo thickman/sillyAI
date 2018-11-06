@@ -1,29 +1,31 @@
-.App {
+.App
+{
+    .inputTxt
+    {
+        font-family: Tahoma;
 
-  .inputTxt {
-     color: white;
-     background-color: black;
-     border: none;
-     font-family: Tahoma;
-     justify-content: center;
-     display: flex;
-     align-self: center;
-   }
+        display: flex;
 
-  button:focus   {
-     outline: none;
-   }
+        color: white;
+        border: none;
+        background-color: black;
 
- .inputButton {
-    color: white;
-    background-color: green;
-    border: none;
-    font-family: Tahoma;
-    border: none;
-  }
+        justify-content: center;
+        align-self: center;
+    }
 
-  .messages {
+    button:focus
+    {
+        outline: none;
+    }
 
-  }
+    .inputButton
+    {
+        font-family: Tahoma;
 
+        color: white;
+        border: none;
+        border: none;
+        background-color: green;
+    }
 }
