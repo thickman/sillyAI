@@ -1,0 +1,23 @@
+chessboard
+
+movable
+
+pieces:
+
+pawn
+knight
+bishop
+rook
+queen
+king
+
+moves available
+is king checked
+
+
+1 option:
+chessboard keep the info about the each occupied square
+
+
+2 option:
+piece holds info about itself
