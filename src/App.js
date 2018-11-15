@@ -3,9 +3,11 @@ import logo from './logo.svg';
 import './App.scss';
 import './styles/styles.scss';
 import InputComponent from './components/InputComponent';
+import {sandboxTest} from './components/sandbox.js'
 
 class App extends Component {
   render() {
+    sandboxTest();
     return (
       <div className="App">
         <header className="App-header">
