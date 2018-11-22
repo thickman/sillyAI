@@ -3,11 +3,14 @@ import logo from './logo.svg';
 import './App.scss';
 import './styles/styles.scss';
 import InputComponent from './components/InputComponent';
+import SillyAIComponent from './components/SillyAIComponent';
 import {sandboxTest} from './components/sandbox.js'
+
+
 
 class App extends Component {
   render() {
-    sandboxTest();
+    //sandboxTest();
     return (
       <div className="App">
         <header className="App-header">
@@ -23,8 +26,10 @@ class App extends Component {
           >
             Learn React
           </a>
-          <InputComponent defaultText= "sth new" defaultLabel="send"/>
+
+
         </header>
+        <SillyAIComponent/>
       </div>
     );
   }
