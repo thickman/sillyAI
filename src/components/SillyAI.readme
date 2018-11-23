@@ -1,0 +1,12 @@
+algorithm:
+
+MACHINE
+1. get an input (points)
+2. create random weights for that points
+3. activation function based on sum (a0w0 + a1w1 + ... + anwn) to determine the output
+
+TRAINING PROCESS
+1. get and input (points) with known correct output (answers) for them
+2. produce (guess) output for given weights
+3. compare given (guessed) output with correct output and calculate the error
+4. use this error to correct weights (new weight = currentWeight + error * learningRate)
