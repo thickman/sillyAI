@@ -6,8 +6,8 @@ class SillyAIComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      xMax: 200,
-      yMax: 200,
+      xMax: 400,
+      yMax: 400,
     }
   }
 
@@ -36,14 +36,9 @@ class SillyAIComponent extends React.Component {
 
   //////////////////////////////////////////////
 
-
   // so called Activation Function - based on input and weight determine the output
   // here as simple as sum > 0
   guess(weight, point) {
-
-    //console.log("weight: "+weight);
-    //console.log("point: "+point);
-
     const sum =
           point.x * weight.x +
           point.y * weight.y
@@ -51,20 +46,10 @@ class SillyAIComponent extends React.Component {
     return team
   }
 
-  // train a weight
+  // train a weight with a given example
   train(weight, example, team) {
      const guessResult = this.guess(weight, example) // 1
-
-     //console.log("randomWeight: "+JSON.stringify(weight));
-     //console.log("example: "+JSON.stringify(example));
-
-
      const error = team - guessResult
-
-     const isError = error !== 0;
-     //console.log("isError: "+isError);
-
-
      const learningRate = 0.1
      return {
        x: weight.x + example.x * error * learningRate,
@@ -76,36 +61,24 @@ class SillyAIComponent extends React.Component {
     return point.x > point.y ? 1 : -1
   }
 
-  // run array of example on a given weight to train it
+  // run array of example on a given (individual) weight to train it
   trainWeight(weight, randomExamples) {
     return randomExamples.reduce((previousWeight, example)  => {
-      //console.log("===========================");
-      //console.log("previousWeight: "+JSON.stringify(previousWeight));
       const trained = this.train(previousWeight, example, this.team(example));
-      //console.log("trainedWeight: "+JSON.stringify(trained));
       return trained;
     },  weight);
   }
 
-  // run array of examples of given weights
+  // run array of examples on a array of weights
   trainWeights(weights, examples){
     return weights.map((weight) => {
-      console.log("---------  trainWeights ---------");
-      console.log("weight: "+JSON.stringify(weight));
-      console.log("examples: "+JSON.stringify(examples));
-
       const trainedWeight = this.trainWeight(weight, examples);
-      console.log("trainedWeight: "+JSON.stringify(trainedWeight));
       return trainedWeight;
     });
   }
 
+  //get a list of circles
   drawBoard(weights, randomPoints){
-
-    // should it be point[i] and weights[i]?
-    //return randomPoints.map(point=>this.drawCircle(point))
-
-
     const circles = [];
     for (const [i, point] of randomPoints.entries()){
       circles.push(this.drawCircle(weights[i], point));
@@ -113,33 +86,26 @@ class SillyAIComponent extends React.Component {
     return circles;
   }
 
+  // draw a single svg circle
   drawCircle(weight, point){
     const fillColour = this.guess(weight, point) === 1 ? 'red' : 'blue' ;
     return <circle key={'key_'+point.x} r='3' cx={point.x} cy={point.y} fill={fillColour}/>
-
   }
 
 
   // training weights
   render(){
 
-    const POINTS_AMOUNT = 50;
+    const POINTS_AMOUNT = 100;
     const EXAMPLES_AMOUNT = 1000;
 
     const randomPoints = this.generatePoints(POINTS_AMOUNT, false, this.state.xMax);
     const randomWeights = this.generatePoints(POINTS_AMOUNT, true, 1);
     const randomExamples = this.generatePoints(EXAMPLES_AMOUNT, false, this.state.xMax);
 
-    console.log("randomPoints: "+JSON.stringify(randomPoints));
-    console.log("randomWeights: "+JSON.stringify(randomWeights));
-    console.log("randomExamples: "+JSON.stringify(randomExamples));
-
-
-
     const trainedWeights = this.trainWeights(randomWeights, randomExamples)
 
-    console.log("trainedWeights: "+JSON.stringify(trainedWeights));
-
+    // use trainedWeights or randomWeights as first param to see the diff between trained and untrained brain
     const board = this.drawBoard(trainedWeights, randomPoints);
 
     return (
