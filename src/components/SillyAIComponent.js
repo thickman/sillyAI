@@ -92,12 +92,11 @@ class SillyAIComponent extends React.Component {
     return <circle key={'key_'+point.x} r='3' cx={point.x} cy={point.y} fill={fillColour}/>
   }
 
-
   // training weights
   render(){
 
     const POINTS_AMOUNT = 100;
-    const EXAMPLES_AMOUNT = 1000;
+    const EXAMPLES_AMOUNT = 100;
 
     const randomPoints = this.generatePoints(POINTS_AMOUNT, false, this.state.xMax);
     const randomWeights = this.generatePoints(POINTS_AMOUNT, true, 1);
@@ -105,15 +104,46 @@ class SillyAIComponent extends React.Component {
 
     const trainedWeights = this.trainWeights(randomWeights, randomExamples)
 
+    const newRandomPoints = this.generatePoints(POINTS_AMOUNT, false, this.state.xMax);
+
     // use trainedWeights or randomWeights as first param to see the diff between trained and untrained brain
-    const board = this.drawBoard(trainedWeights, randomPoints);
+    const untrainedBoard = this.drawBoard(randomWeights, randomPoints);
+    const trainedBoard = this.drawBoard(trainedWeights, randomPoints);
+    const trainedBoardWithFreshData = this.drawBoard(trainedWeights, newRandomPoints);
+
+    const containerStyle = {
+      display:'flex',
+
+    };
+
+    const boardStyle = {
+      backgroundColor: "#fff1db",
+      marginLeft: '20px',
+    };
 
     return (
-      <div id="boardContainer">
-        <svg id="board" width={this.state.xMax} height={this.state.yMax}>
-          { board }
-          <line x1="0" x2={this.state.xMax} y1="0" y2={this.state.yMax} stroke="purple" />
-        </svg>
+      <div style={containerStyle}>
+        <div style={boardStyle} id="boardContainer">
+          <svg id="untrained-board" width={this.state.xMax} height={this.state.yMax}>
+            { untrainedBoard }
+            <line x1="0" x2={this.state.xMax} y1="0" y2={this.state.yMax} stroke="purple" />
+          </svg>
+          <p>untrained brain</p>
+        </div>
+        <div style={boardStyle} id="boardContainer">
+          <svg id="trained-board" width={this.state.xMax} height={this.state.yMax}>
+            { trainedBoard }
+            <line x1="0" x2={this.state.xMax} y1="0" y2={this.state.yMax} stroke="purple" />
+          </svg>
+          <p>trained brain</p>
+        </div>
+        <div style={boardStyle} id="boardContainer2">
+          <svg id="fresh-data-board" width={this.state.xMax} height={this.state.yMax}>
+            { trainedBoardWithFreshData }
+            <line x1="0" x2={this.state.xMax} y1="0" y2={this.state.yMax} stroke="purple" />
+          </svg>
+          <p>trained brain with newly generated points</p>
+        </div>
       </div>
     )
   }

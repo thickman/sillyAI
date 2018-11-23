@@ -10,3 +10,6 @@ TRAINING PROCESS
 2. produce (guess) output for given weights
 3. compare given (guessed) output with correct output and calculate the error
 4. use this error to correct weights (new weight = currentWeight + error * learningRate)
+
+
+//update that
