@@ -12,4 +12,12 @@ TRAINING PROCESS
 4. use this error to correct weights (new weight = currentWeight + error * learningRate)
 
 
-//update that
+// update description above
+
+// in that case can we think of this brain as array of weights
+
+
+TUTORIAL FROM:
+FUN FUN FUNCTION
+Let's code a neural network in plain JavaScript Part 1
+https://www.youtube.com/watch?v=o98qlvrcqiU

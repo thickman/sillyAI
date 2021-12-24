@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.scss';
-import './styles/styles.scss';
-import InputComponent from './components/InputComponent';
 import SillyAIComponent from './components/SillyAIComponent';
-import {sandboxTest} from './components/sandbox.js'
+
 
 
 
 class App extends Component {
   render() {
-    //sandboxTest();
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <header className="App-header">          
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
@@ -26,8 +21,6 @@ class App extends Component {
           >
             Learn React
           </a>
-
-
         </header>
         <SillyAIComponent/>
       </div>

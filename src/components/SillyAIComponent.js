@@ -96,7 +96,7 @@ class SillyAIComponent extends React.Component {
   render(){
 
     const POINTS_AMOUNT = 100;
-    const EXAMPLES_AMOUNT = 100;
+    const EXAMPLES_AMOUNT = 10;
 
     const randomPoints = this.generatePoints(POINTS_AMOUNT, false, this.state.xMax);
     const randomWeights = this.generatePoints(POINTS_AMOUNT, true, 1);
@@ -120,6 +120,8 @@ class SillyAIComponent extends React.Component {
       backgroundColor: "#fff1db",
       marginLeft: '20px',
     };
+
+    console.log("trainedWeights: "+ JSON.stringify(trainedWeights, null, 3));
 
     return (
       <div style={containerStyle}>
